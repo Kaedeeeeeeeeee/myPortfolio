@@ -1,0 +1,25 @@
+@use "../breakpoints.scss" as breakpoints;
+
+.avatarZoom :global(img) {
+    transform: scale(1.2);
+    transform-origin: center;
+    object-position: center 30%;
+}
+
+.hover {
+    transition: var(--transition-micro-medium);
+
+    &:hover {
+        transform: translateX(var(--static-space-4));
+    }
+}
+
+@media (max-width: breakpoints.$s) {
+    .textAlign {
+        text-align: center;
+    }
+
+    .blockAlign {
+        align-self: center;
+    }
+}
