@@ -3,8 +3,20 @@
 import React, { useEffect, useState } from "react";
 import styles from "./SnowEffect.module.scss";
 
+const SNOWFLAKE_CHARS = ["❄", "❅", "❆"];
+
 export const SnowEffect: React.FC<{ isEnabled: boolean }> = ({ isEnabled }) => {
-    const [flakes, setFlakes] = useState<{ id: number; left: string; delay: string; duration: string; size: string; opacity: number }[]>([]);
+    const [flakes, setFlakes] = useState<
+        {
+            id: number;
+            left: string;
+            delay: string;
+            duration: string;
+            size: string;
+            opacity: number;
+            character: string;
+        }[]
+    >([]);
 
     useEffect(() => {
         if (isEnabled) {
@@ -12,9 +24,10 @@ export const SnowEffect: React.FC<{ isEnabled: boolean }> = ({ isEnabled }) => {
                 id: i,
                 left: `${Math.random() * 100}%`,
                 delay: `${Math.random() * 5}s`,
-                duration: `${Math.random() * 5 + 5}s`,
-                size: `${Math.random() * 4 + 2}px`,
-                opacity: Math.random() * 0.7 + 0.3,
+                duration: `${Math.random() * 10 + 10}s`, // Slower fall for more grace
+                size: `${Math.random() * 1 + 0.8}rem`, // Larger relative size for text
+                opacity: Math.random() * 0.6 + 0.4,
+                character: SNOWFLAKE_CHARS[Math.floor(Math.random() * SNOWFLAKE_CHARS.length)],
             }));
             setFlakes(newFlakes);
         } else {
@@ -34,11 +47,12 @@ export const SnowEffect: React.FC<{ isEnabled: boolean }> = ({ isEnabled }) => {
                         left: flake.left,
                         animationDelay: flake.delay,
                         animationDuration: flake.duration,
-                        width: flake.size,
-                        height: flake.size,
+                        fontSize: flake.size,
                         opacity: flake.opacity,
                     }}
-                />
+                >
+                    {flake.character}
+                </div>
             ))}
         </div>
     );
