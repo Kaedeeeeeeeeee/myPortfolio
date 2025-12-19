@@ -21,9 +21,9 @@
 
 .toggleWrapper.expanded {
   max-width: 180px;
-  background: var(--neutral-alpha-medium);
-  backdrop-filter: blur(8px);
-  border-color: var(--neutral-alpha-medium);
+  background: transparent;
+  backdrop-filter: none;
+  border-color: transparent;
   padding: 2px 4px;
 }
 
