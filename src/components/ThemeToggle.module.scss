@@ -48,8 +48,11 @@
   flex-shrink: 0;
   border: none !important;
   background: transparent !important;
+  box-shadow: none !important; // Add this to remove potential glows/shadows
+  --toggle-background-selected: transparent !important; // Try to override CSS variables if they exist
 }
 
-.optionsWrapper :global(button:hover) {
+.optionsWrapper :global(button:hover),
+.toggleWrapper :global(button:hover) {
   background: var(--neutral-alpha-weak) !important;
 }

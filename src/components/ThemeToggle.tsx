@@ -35,7 +35,18 @@ export const ThemeToggle: React.FC = () => {
 
   if (!mounted) return null;
 
-  const mainIcon = currentTheme === "dark" ? "dark" : "light";
+  const mainIcon = isSnowing ? "snow" : (currentTheme === "dark" ? "dark" : "light");
+
+  const handleOptionClick = (type: "light" | "dark" | "snow") => {
+    if (type === "snow") {
+      // Toggle snow on/off
+      toggleSnow();
+    } else {
+      // Switch theme, and ensure snow is off if it's treated as a separate mode
+      setTheme(type);
+      if (isSnowing) toggleSnow();
+    }
+  };
 
   return (
     <div className={styles.container} ref={containerRef}>
@@ -54,30 +65,30 @@ export const ThemeToggle: React.FC = () => {
 
         {/* Expanded Options */}
         <div className={styles.optionsWrapper}>
-          <ToggleButton
-            prefixIcon="light"
-            onClick={() => {
-              setTheme("light");
-              // setIsExpanded(false);
-            }}
-            selected={currentTheme === "light"}
-            aria-label="Switch to light mode"
-          />
-          <ToggleButton
-            prefixIcon="dark"
-            onClick={() => {
-              setTheme("dark");
-              // setIsExpanded(false);
-            }}
-            selected={currentTheme === "dark"}
-            aria-label="Switch to dark mode"
-          />
-          <ToggleButton
-            prefixIcon="snow"
-            onClick={toggleSnow}
-            selected={isSnowing}
-            aria-label="Toggle snow effect"
-          />
+          {mainIcon !== "light" && (
+            <ToggleButton
+              prefixIcon="light"
+              onClick={() => handleOptionClick("light")}
+              selected={currentTheme === "light" && !isSnowing}
+              aria-label="Switch to light mode"
+            />
+          )}
+          {mainIcon !== "dark" && (
+            <ToggleButton
+              prefixIcon="dark"
+              onClick={() => handleOptionClick("dark")}
+              selected={currentTheme === "dark" && !isSnowing}
+              aria-label="Switch to dark mode"
+            />
+          )}
+          {mainIcon !== "snow" && (
+            <ToggleButton
+              prefixIcon="snow"
+              onClick={() => handleOptionClick("snow")}
+              selected={isSnowing}
+              aria-label="Toggle snow effect"
+            />
+          )}
         </div>
       </Row>
     </div>
