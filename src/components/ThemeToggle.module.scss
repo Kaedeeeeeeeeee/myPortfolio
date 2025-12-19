@@ -6,9 +6,9 @@
 }
 
 .toggleWrapper {
-  background: var(--neutral-alpha-weak);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--neutral-alpha-weak);
+  background: transparent;
+  backdrop-filter: none;
+  border: 1px solid transparent;
   border-radius: var(--radius-m-4);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   overflow: hidden;
@@ -22,6 +22,7 @@
 .toggleWrapper.expanded {
   max-width: 180px;
   background: var(--neutral-alpha-medium);
+  backdrop-filter: blur(8px);
   border-color: var(--neutral-alpha-medium);
   padding: 2px 4px;
 }
