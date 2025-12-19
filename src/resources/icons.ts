@@ -31,6 +31,10 @@ import {
 
 import { FaDiscord, FaGithub, FaLinkedin, FaX, FaThreads, FaXTwitter, FaFacebook, FaPinterest, FaWhatsapp, FaReddit, FaTelegram, } from "react-icons/fa6";
 
+import { BsSnow } from "react-icons/bs";
+
+import { HiOutlineSun, HiOutlineMoon } from "react-icons/hi2";
+
 export const iconLibrary: Record<string, IconType> = {
   arrowUpRight: HiArrowUpRight,
   arrowRight: HiArrowRight,
@@ -63,7 +67,12 @@ export const iconLibrary: Record<string, IconType> = {
   whatsapp: FaWhatsapp,
   reddit: FaReddit,
   telegram: FaTelegram,
+  snow: BsSnow,
+  light: HiOutlineSun,
+  dark: HiOutlineMoon,
 };
+
+
 
 export type IconLibrary = typeof iconLibrary;
 export type IconName = keyof IconLibrary;

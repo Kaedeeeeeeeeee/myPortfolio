@@ -20,6 +20,19 @@ import {
 import { style, dataStyle } from "../resources";
 import { iconLibrary } from "../resources/icons";
 
+import { SnowProvider, useSnow } from "./SnowContext";
+import { SnowEffect } from "./SnowEffect";
+
+const SnowManager = ({ children }: { children: React.ReactNode }) => {
+  const { isSnowing } = useSnow();
+  return (
+    <>
+      <SnowEffect isEnabled={isSnowing} />
+      {children}
+    </>
+  );
+};
+
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
     <LayoutProvider>
@@ -48,10 +61,17 @@ export function Providers({ children }: { children: React.ReactNode }) {
           }}
         >
           <ToastProvider>
-            <IconProvider icons={iconLibrary}>{children}</IconProvider>
+            <IconProvider icons={iconLibrary}>
+              <SnowProvider>
+                <SnowManager>
+                  {children}
+                </SnowManager>
+              </SnowProvider>
+            </IconProvider>
           </ToastProvider>
         </DataThemeProvider>
       </ThemeProvider>
     </LayoutProvider>
   );
 }
+
