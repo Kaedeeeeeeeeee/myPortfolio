@@ -16,7 +16,6 @@ import { baseURL, about, person, social } from "@/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import { SnowyAvatar } from "@/components/about/SnowyAvatar";
-import { SnowyName } from "@/components/about/SnowyName";
 import React from "react";
 
 export async function generateMetadata() {
@@ -144,7 +143,9 @@ export default function About() {
                 />
               </Row>
             )}
-            <SnowyName className={styles.textAlign} name={person.name} />
+            <Heading className={styles.textAlign} variant="display-strong-xl">
+              {person.name}
+            </Heading>
             <Text
               className={styles.textAlign}
               variant="display-default-xs"

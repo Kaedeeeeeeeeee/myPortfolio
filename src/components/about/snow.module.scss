@@ -4,63 +4,83 @@
     justify-content: center;
 }
 
-.snowCap {
+/* Santa Hat Container */
+.santaHat {
     position: absolute;
-    top: -12px;
-    /* Slightly lower to sit better */
+    top: -35px;
+    /* Position above the avatar */
     left: 50%;
-    transform: translateX(-50%);
-    width: 95%;
-    /* Wider to cover more */
-    height: 25px;
-    background: radial-gradient(farthest-side at 50% 100%, #fff 80%, transparent 100%);
-    background-size: 20px 15px;
-    background-repeat: repeat-x;
-    background-position: center bottom;
-    z-index: 10;
-    filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.15));
-    /* Increased shadow visibility */
-    opacity: 0;
-    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    /* Start centering */
+    width: 60px;
+    height: 60px;
+    z-index: 20;
     pointer-events: none;
-
-    border-radius: 50% 50% 30% 30%;
-    /* Softer curve */
-    background-color: rgba(255, 255, 255, 0.98);
-    /* Whiter */
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    /* Bouncy effect */
+    transform-origin: bottom center;
+    transform: translateX(-40%) scale(0) rotate(-10deg);
+    /* Start hidden and small */
 
     &.visible {
         opacity: 1;
-        transform: translateX(-50%) translateY(0);
+        /* Tilt slightly to the left (counter-clockwise) and scale up */
+        /* translateX(-50%) centers it relative to the left:50% */
+        /* We want it slightly offset to look like it's wearing on the head */
+        transform: translateX(-50%) translateY(0) scale(1) rotate(-15deg);
     }
 }
 
-.snowTextWrapper {
-    position: relative;
-    display: inline-block;
-}
-
-.snowTextCap {
+/* The red part of the hat */
+.hatBody {
     position: absolute;
-    top: -6px;
-    /* Closer to text */
-    left: -5%;
-    /* Overhang slightly */
-    width: 110%;
-    height: 14px;
-    background-image:
-        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.95) 4px, transparent 5px),
-        radial-gradient(circle at 50% 70%, rgba(255, 255, 255, 0.95) 6px, transparent 7px),
-        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.95) 5px, transparent 6px);
-    background-size: 40px 15px;
-    background-repeat: repeat-x;
-    z-index: 10;
-    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
-    opacity: 0;
-    transition: opacity 0.8s ease;
-    pointer-events: none;
+    bottom: 0;
+    left: 10px;
+    width: 40px;
+    height: 45px;
+    background-color: #d62828;
+    /* Christmas Red */
+    border-radius: 50% 50% 0 0;
+    /* Skew it a bit to make it look floppy */
+    transform: skewX(10deg);
+    box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.1);
+}
 
-    &.visible {
-        opacity: 1;
-    }
+/* The white trim at the bottom */
+.hatTrim {
+    position: absolute;
+    bottom: -2px;
+    left: 5px;
+    width: 50px;
+    height: 14px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+    z-index: 2;
+}
+
+/* The ball at the top */
+.hatPomPom {
+    position: absolute;
+    top: -5px;
+    right: 5px;
+    /* Adjust based on skew */
+    width: 16px;
+    height: 16px;
+    background-color: #f8f9fa;
+    border-radius: 50%;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    z-index: 3;
+}
+
+/* Fold effect for the hat tip (optional, keeping it simple for now) */
+.hatFold {
+    position: absolute;
+    top: 5px;
+    right: 8px;
+    width: 25px;
+    height: 25px;
+    background-color: #d62828;
+    border-radius: 50%;
+    z-index: 1;
 }

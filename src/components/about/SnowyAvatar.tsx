@@ -17,7 +17,11 @@ export const SnowyAvatar: React.FC<SnowyAvatarProps> = ({ src, size = "xl", clas
 
     return (
         <div className={snowStyles.snowWrapper}>
-            <div className={`${snowStyles.snowCap} ${isSnowing ? snowStyles.visible : ''}`} />
+            <div className={`${snowStyles.santaHat} ${isSnowing ? snowStyles.visible : ''}`}>
+                <div className={snowStyles.hatPomPom} />
+                <div className={snowStyles.hatBody} />
+                <div className={snowStyles.hatTrim} />
+            </div>
             <Avatar 
                 className={className} 
                 src={src} 
