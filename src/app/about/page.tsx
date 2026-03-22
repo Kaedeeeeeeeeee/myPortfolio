@@ -17,6 +17,7 @@ import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import { SnowyAvatar } from "@/components/about/SnowyAvatar";
 import React from "react";
+import { WorkResourcePreloader } from "@/components/WorkResourcePreloader";
 
 export async function generateMetadata() {
   return Meta.generate({
@@ -348,6 +349,7 @@ export default function About() {
           )}
         </Column>
       </Row>
+      <WorkResourcePreloader />
     </Column>
   );
 }
