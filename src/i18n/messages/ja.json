@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "about": "自己紹介",
+    "work": "作品",
+    "blog": "ブログ",
+    "gallery": "ギャラリー"
+  },
+  "about": {
+    "title": "自己紹介 – 張 世峰",
+    "description": "東京在住のプロダクトエンジニア、張 世峰のポートフォリオ",
+    "introTitle": "はじめに",
+    "studiesTitle": "学歴",
+    "workTitle": "職歴",
+    "technicalTitle": "技術スキル",
+    "scheduleCall": "面談を予約",
+    "resumeDownload": "履歴書"
+  },
+  "home": {
+    "title": "張 世峰のポートフォリオ",
+    "description": "プロダクトエンジニアとしての作品を紹介するポートフォリオサイト"
+  },
+  "work": {
+    "title": "プロジェクト – 張 世峰",
+    "description": "張 世峰のデザイン・開発プロジェクト"
+  },
+  "notFound": {
+    "title": "404",
+    "description": "お探しのページは見つかりませんでした。",
+    "back": "戻る"
+  },
+  "footer": {
+    "buildWith": "ポートフォリオ作成ツール"
+  }
+}

@@ -24,7 +24,7 @@ import { notFound } from "next/navigation";
 
 function getMDXFiles(dir: string) {
   if (!fs.existsSync(dir)) {
-    notFound();
+    return [];
   }
 
   return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
@@ -68,5 +68,18 @@ function getMDXData(dir: string) {
 
 export function getPosts(customPath = ["", "", "", ""]) {
   const postsDir = path.join(process.cwd(), ...customPath);
-  return getMDXData(postsDir);
+
+  // Fallback to en if locale dir doesn't exist or is empty
+  const data = getMDXData(postsDir);
+  if (data.length === 0) {
+    const enPath = path.join(
+      process.cwd(),
+      ...customPath.slice(0, -1),
+      "en",
+    );
+    if (fs.existsSync(enPath)) {
+      return getMDXData(enPath);
+    }
+  }
+  return data;
 }

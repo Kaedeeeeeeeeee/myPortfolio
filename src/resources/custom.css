@@ -52,3 +52,9 @@
   --scheme-neutral-600-50: rgba(137,152,159,0.5);
   /*
 }*/
+
+/* CJK line-height adjustment */
+[lang="zh"],
+[lang="ja"] {
+  line-height: 1.8;
+}

@@ -12,6 +12,7 @@ import {
   HiOutlineDocument,
   HiOutlineGlobeAsiaAustralia,
   HiOutlineRocketLaunch,
+  HiArrowDownTray,
 } from "react-icons/hi2";
 
 import {
@@ -67,6 +68,7 @@ export const iconLibrary: Record<string, IconType> = {
   whatsapp: FaWhatsapp,
   reddit: FaReddit,
   telegram: FaTelegram,
+  download: HiArrowDownTray,
   snow: BsSnow,
   light: HiOutlineSun,
   dark: HiOutlineMoon,

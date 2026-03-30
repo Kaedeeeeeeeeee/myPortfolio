@@ -1,0 +1,58 @@
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+}
+
+.toggleWrapper {
+  background: transparent;
+  backdrop-filter: none;
+  border: 1px solid transparent;
+  border-radius: var(--radius-m-4);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: hidden;
+  max-width: 52px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 2px;
+}
+
+.toggleWrapper.expanded {
+  max-width: 180px;
+  background: transparent;
+  backdrop-filter: none;
+  border-color: transparent;
+  padding: 2px 4px;
+}
+
+.optionsWrapper {
+  display: flex;
+  gap: 2px;
+  opacity: 0;
+  transform: scale(0.8) translateX(-10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  flex-direction: row;
+  align-items: center;
+}
+
+.expanded .optionsWrapper {
+  opacity: 1;
+  transform: scale(1) translateX(0);
+  pointer-events: auto;
+}
+
+.optionsWrapper :global(button),
+.toggleWrapper :global(button) {
+  flex-shrink: 0;
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.optionsWrapper :global(button:hover),
+.toggleWrapper :global(button:hover) {
+  background: var(--neutral-alpha-weak) !important;
+}

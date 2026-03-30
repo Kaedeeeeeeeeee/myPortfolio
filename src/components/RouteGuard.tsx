@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { routes, protectedRoutes } from "@/resources";
 import { Flex, Spinner, Button, Heading, Column, PasswordInput } from "@once-ui-system/core";
-import NotFound from "@/app/not-found";
+import NotFound from "@/app/[locale]/not-found";
 
 interface RouteGuardProps {
   children: React.ReactNode;
@@ -29,13 +29,16 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
       const checkRouteEnabled = () => {
         if (!pathname) return false;
 
-        if (pathname in routes) {
-          return routes[pathname as keyof typeof routes];
+        // Strip locale prefix from pathname
+        const strippedPath = pathname.replace(/^\/(en|ja|zh)/, "") || "/";
+
+        if (strippedPath in routes) {
+          return routes[strippedPath as keyof typeof routes];
         }
 
         const dynamicRoutes = ["/blog", "/work"] as const;
         for (const route of dynamicRoutes) {
-          if (pathname?.startsWith(route) && routes[route]) {
+          if (strippedPath?.startsWith(route) && routes[route]) {
             return true;
           }
         }
@@ -46,7 +49,8 @@ const RouteGuard: React.FC<RouteGuardProps> = ({ children }) => {
       const routeEnabled = checkRouteEnabled();
       setIsRouteEnabled(routeEnabled);
 
-      if (protectedRoutes[pathname as keyof typeof protectedRoutes]) {
+      const strippedForProtected = pathname.replace(/^\/(en|ja|zh)/, "") || "/";
+      if (protectedRoutes[strippedForProtected as keyof typeof protectedRoutes]) {
         setIsPasswordRequired(true);
 
         const response = await fetch("/api/check-auth");

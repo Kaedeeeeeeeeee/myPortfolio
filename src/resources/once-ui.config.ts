@@ -11,7 +11,6 @@ import {
   SocialSharingConfig,
   StyleConfig,
 } from "@/types";
-import { home } from "./index";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
 const baseURL: string = "https://www.chatjlpt.jp";
@@ -189,7 +188,7 @@ const schema: SchemaConfig = {
   logo: "",
   type: "Person",
   name: "Zhang Shifeng",
-  description: home.description,
+  description: "Portfolio website showcasing my work as a Product Engineer",
   email: "f.shera.09@gmail.com",
 };
 

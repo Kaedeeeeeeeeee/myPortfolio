@@ -1,5 +1,11 @@
 import { ImageResponse } from "next/og";
-import { baseURL, person } from "@/resources";
+import { baseURL } from "@/resources";
+
+const person = {
+  name: "Zhang Shifeng",
+  role: "Product Engineer",
+  avatar: "/images/avatar.jpg",
+};
 
 export const runtime = "nodejs";
 

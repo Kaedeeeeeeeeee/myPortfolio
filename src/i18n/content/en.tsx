@@ -1,41 +1,28 @@
 import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
-import { Line, Logo, Row, Text } from "@once-ui-system/core";
 
 const person: Person = {
   firstName: "Shifeng",
   lastName: "Zhang",
-  name: `Zhang Shifeng`,
+  name: "Zhang Shifeng",
   role: "Product Engineer",
   avatar: "/images/avatar.jpg",
   email: "f.shera.09@gmail.com",
-  location: "Asia/Tokyo", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["Chinese", "Japanese", "English"], // optional: Leave the array empty if you don't want to display languages
+  location: "Asia/Tokyo",
+  languages: ["Chinese", "Japanese", "English"],
 };
 
 const newsletter: Newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: <>My weekly newsletter about creativity and engineering</>,
 };
 
 const social: Social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
   {
     name: "GitHub",
     icon: "github",
     link: "https://github.com/Kaedeeeeeeeeee",
   },
-  /*{
-    name: "LinkedIn",
-    icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
-  },*/
   {
     name: "Email",
     icon: "email",
@@ -51,28 +38,14 @@ const home: Home = {
   description: `Portfolio website showcasing my work as a ${person.role}`,
   headline: <>Building bridges between design and code</>,
   featured: {
-    display: true,
-    title: (
-      <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
-        <Line background="brand-alpha-strong" vert height="20" />
-        <Text marginRight="4" onBackground="brand-medium">
-          Featured work
-        </Text>
-      </Row>
-    ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    display: false,
+    title: <>Featured work</>,
+    href: "/work",
   },
   subline: (
     <>
-      I'm Selene, a design engineer at{" "}
-      <Logo
-        dark
-        icon="/trademarks/wordmark-dark.svg"
-        style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}
-      />
-      , where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      I&apos;m {person.name}, a {person.role} based in Tokyo.
+      I build full-stack applications from idea to launch.
     </>
   ),
 };
@@ -105,7 +78,7 @@ const about: About = {
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Work Experience",
     experiences: [
       {
@@ -135,11 +108,11 @@ const about: About = {
           </>,
         ],
         images: [],
-      }
+      },
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Studies",
     institutions: [
       {
@@ -159,7 +132,7 @@ const about: About = {
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Technical Skills",
     skills: [
       {
@@ -181,8 +154,6 @@ const blog: Blog = {
   label: "Blog",
   title: "Writing about design and tech...",
   description: `Read what ${person.name} has been up to recently`,
-  // Create new blog posts by adding a new .mdx file to app/blog/posts
-  // All posts will be listed on the /blog route
 };
 
 const work: Work = {
@@ -190,8 +161,6 @@ const work: Work = {
   label: "Work",
   title: `Projects – ${person.name}`,
   description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
-  // All projects will be listed on the /home and /work routes
 };
 
 const gallery: Gallery = {
@@ -199,50 +168,17 @@ const gallery: Gallery = {
   label: "Gallery",
   title: `Photo gallery – ${person.name}`,
   description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
   images: [
-    {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
+    { src: "/images/gallery/horizontal-1.jpg", alt: "image", orientation: "horizontal" },
+    { src: "/images/gallery/vertical-4.jpg", alt: "image", orientation: "vertical" },
+    { src: "/images/gallery/horizontal-3.jpg", alt: "image", orientation: "horizontal" },
+    { src: "/images/gallery/vertical-1.jpg", alt: "image", orientation: "vertical" },
+    { src: "/images/gallery/vertical-2.jpg", alt: "image", orientation: "vertical" },
+    { src: "/images/gallery/horizontal-2.jpg", alt: "image", orientation: "horizontal" },
+    { src: "/images/gallery/horizontal-4.jpg", alt: "image", orientation: "horizontal" },
+    { src: "/images/gallery/vertical-3.jpg", alt: "image", orientation: "vertical" },
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+const content = { person, social, newsletter, home, about, blog, work, gallery };
+export default content;

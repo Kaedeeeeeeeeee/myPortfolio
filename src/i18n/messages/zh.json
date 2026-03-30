@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "about": "关于",
+    "work": "作品",
+    "blog": "博客",
+    "gallery": "相册"
+  },
+  "about": {
+    "title": "关于 – 张世峰",
+    "description": "张世峰，东京，产品工程师",
+    "introTitle": "简介",
+    "studiesTitle": "教育经历",
+    "workTitle": "工作经历",
+    "technicalTitle": "技术栈",
+    "scheduleCall": "预约面谈",
+    "resumeDownload": "简历"
+  },
+  "home": {
+    "title": "张世峰的作品集",
+    "description": "产品工程师张世峰的作品集网站"
+  },
+  "work": {
+    "title": "项目 – 张世峰",
+    "description": "张世峰的设计与开发项目"
+  },
+  "notFound": {
+    "title": "404",
+    "description": "您访问的页面不存在。",
+    "back": "返回"
+  },
+  "footer": {
+    "buildWith": "使用以下工具构建"
+  }
+}

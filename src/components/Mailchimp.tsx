@@ -1,6 +1,8 @@
 "use client";
 
-import { mailchimp, newsletter } from "@/resources";
+import { mailchimp } from "@/resources";
+
+const newsletter = { display: false, title: null, description: null };
 import { Button, Heading, Input, Text, Background, Column, Row } from "@once-ui-system/core";
 import { opacity, SpacingToken } from "@once-ui-system/core";
 import { useState } from "react";
