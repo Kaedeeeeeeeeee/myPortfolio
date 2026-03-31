@@ -8,6 +8,7 @@ import {
   Column,
   Flex,
   Heading,
+  Row,
   SmartLink,
   Text,
 } from "@once-ui-system/core";
@@ -46,6 +47,7 @@ interface ProjectCardProps {
   description: string;
   avatars: { src: string }[];
   link: string;
+  imageLayout?: string;
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -56,10 +58,23 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   description,
   avatars,
   link,
+  imageLayout,
 }) => {
   return (
     <Column fillWidth gap="m">
-      {images.length > 0 && /\.(mp4|webm|ogg)$/i.test(images[0]) ? (
+      {imageLayout === "phone" ? (
+        <Row fillWidth gap="8" style={{ maxHeight: "50vh" }}>
+          {images.map((image, index) => (
+            <Flex key={index} flex={1} radius="l" overflow="hidden" border="neutral-medium">
+              <img
+                src={image}
+                alt={title}
+                style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "var(--radius-l)" }}
+              />
+            </Flex>
+          ))}
+        </Row>
+      ) : images.length > 0 && /\.(mp4|webm|ogg)$/i.test(images[0]) ? (
         <Flex
           fillWidth
           radius="l"

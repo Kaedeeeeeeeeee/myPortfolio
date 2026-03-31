@@ -129,36 +129,50 @@ export default async function Project({
           </Text>
         </Row>
       </Row>
-      {post.metadata.images.map((image, index) =>
-        /\.(mp4|webm|ogg)$/i.test(image) ? (
-          <Flex
-            key={index}
-            fillWidth
-            radius="m"
-            overflow="hidden"
-            border="neutral-alpha-medium"
-            style={{ aspectRatio: "16/9" }}
-          >
-            <video
+      {post.metadata.imageLayout === "phone" ? (
+        <Row fillWidth gap="8" style={{ maxHeight: "50vh" }}>
+          {post.metadata.images.map((image, index) => (
+            <Flex key={index} flex={1} radius="m" overflow="hidden" border="neutral-alpha-medium">
+              <img
+                src={image}
+                alt={post.metadata.title}
+                style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "var(--radius-m)" }}
+              />
+            </Flex>
+          ))}
+        </Row>
+      ) : (
+        post.metadata.images.map((image, index) =>
+          /\.(mp4|webm|ogg)$/i.test(image) ? (
+            <Flex
+              key={index}
+              fillWidth
+              radius="m"
+              overflow="hidden"
+              border="neutral-alpha-medium"
+              style={{ aspectRatio: "16/9" }}
+            >
+              <video
+                src={image}
+                autoPlay
+                muted
+                loop
+                playsInline
+                controls
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            </Flex>
+          ) : (
+            <Media
+              key={index}
+              priority={index === 0}
+              aspectRatio="16 / 9"
+              radius="m"
+              alt="image"
               src={image}
-              autoPlay
-              muted
-              loop
-              playsInline
-              controls
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
             />
-          </Flex>
-        ) : (
-          <Media
-            key={index}
-            priority={index === 0}
-            aspectRatio="16 / 9"
-            radius="m"
-            alt="image"
-            src={image}
-          />
-        ),
+          ),
+        )
       )}
       <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
         <CustomMDX source={post.content} />
