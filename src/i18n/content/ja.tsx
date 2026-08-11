@@ -4,7 +4,7 @@ const person: Person = {
   firstName: "世峰",
   lastName: "張",
   name: "張 詩楓",
-  role: "プロダクトエンジニア",
+  role: "個人開発者",
   avatar: "/images/avatar.jpg",
   email: "f.shera.09@gmail.com",
   location: "Asia/Tokyo",
@@ -35,7 +35,7 @@ const home: Home = {
   image: "/images/og/home.jpg",
   label: "ホーム",
   title: `${person.name}のポートフォリオ`,
-  description: `プロダクトエンジニアとしての作品を紹介するポートフォリオサイト`,
+  description: `WebとAppleプラットフォームの個人開発作品を紹介するポートフォリオサイト`,
   headline: <>デザインとコードの架け橋を築く</>,
   featured: {
     display: false,
@@ -45,7 +45,7 @@ const home: Home = {
   subline: (
     <>
       東京在住の{person.role}、{person.name}です。
-      アイデアからリリースまで、フルスタックアプリケーションを開発しています。
+      WebとAppleプラットフォームで、アイデアからリリースまでプロダクトを開発しています。
     </>
   ),
 };
@@ -71,10 +71,9 @@ const about: About = {
     title: "はじめに",
     description: (
       <>
-        張 詩楓はアイデアからリリースまでフルスタックアプリケーションを開発するプロダクトエンジニアです。
-        ゲームデザインとEdTech研究のバックグラウンドを活かし、AI搭載の学習ツール、
-        OCRユーティリティ、生産性向上アプリを開発しています。フロントエンド、バックエンド、AI統合まで、
-        エンドツーエンドでプロダクトを届けます。
+        WebとAppleプラットフォームで、企画・設計・開発・リリースまで一貫して手がける個人開発者です。
+        2026年にiOS/iPadOSアプリ4本とmacOSアプリ2本をApp Storeへリリースしました。
+        教育工学とゲームデザインの知見を活かし、学習プロダクトや日常の課題を解決するツールを開発しています。
       </>
     ),
   },
@@ -84,7 +83,7 @@ const about: About = {
     experiences: [
       {
         company: "Innuna Inc.",
-        timeframe: "2026 - 現在",
+        timeframe: "2026年1月 - 8月",
         role: "iOSアプリ開発者 & アプリデザイナー（インターン）",
         achievements: [
           <>
@@ -137,12 +136,17 @@ const about: About = {
     title: "技術スキル",
     skills: [
       {
-        title: "Unity, C#, Swift/iOS, JavaScript, TypeScript, Next.js, Python, HTML/CSS",
+        title: "Swift, SwiftUI, ActivityKit, Apple Vision, WebKit, Unity, C#",
         description: <>開発</>,
         images: [],
       },
       {
-        title: "UI/UX Design, Figma, Git/GitHub, Supabase, OpenAI API",
+        title: "TypeScript, Next.js, Supabase, Stripe, Python, HTML/CSS",
+        description: <>Web & バックエンド</>,
+        images: [],
+      },
+      {
+        title: "UI/UX Design, Figma, Git/GitHub",
         description: <>デザイン & ツール</>,
         images: [],
       },

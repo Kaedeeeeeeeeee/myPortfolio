@@ -4,7 +4,7 @@ const person: Person = {
   firstName: "诗枫",
   lastName: "张",
   name: "张诗枫",
-  role: "产品工程师",
+  role: "独立开发者",
   avatar: "/images/avatar.jpg",
   email: "f.shera.09@gmail.com",
   location: "Asia/Tokyo",
@@ -35,7 +35,7 @@ const home: Home = {
   image: "/images/og/home.jpg",
   label: "首页",
   title: `${person.name}的作品集`,
-  description: `产品工程师${person.name}的作品集网站`,
+  description: `${person.name}的 Web 与 Apple 平台独立开发作品集`,
   headline: <>连接设计与代码</>,
   featured: {
     display: false,
@@ -45,7 +45,7 @@ const home: Home = {
   subline: (
     <>
       我是{person.name}，一名居住在东京的{person.role}。
-      从想法到上线，独立交付全栈应用。
+      在 Web 与 Apple 平台上，从想法、设计到上线独立交付产品。
     </>
   ),
 };
@@ -71,9 +71,9 @@ const about: About = {
     title: "简介",
     description: (
       <>
-        张诗枫是一名产品工程师，擅长从零到一构建全栈应用。
-        凭借游戏设计和教育科技研究的背景，他开发 AI 驱动的学习工具、
-        OCR 工具和生产力应用——从前端、后端到 AI 集成，端到端交付产品。
+        张诗枫是一名独立开发者，负责 Web 与 Apple 平台产品从企划、设计、开发到上线的完整流程。
+        2026年已在 App Store 发布4款 iOS/iPadOS 应用和2款 macOS 应用，
+        并结合教育工程与游戏设计背景，持续开发学习产品和解决日常问题的工具。
       </>
     ),
   },
@@ -83,7 +83,7 @@ const about: About = {
     experiences: [
       {
         company: "Innuna Inc.",
-        timeframe: "2026 - 至今",
+        timeframe: "2026年1月 - 8月",
         role: "iOS 应用开发 & 应用设计（实习）",
         achievements: [
           <>
@@ -136,13 +136,18 @@ const about: About = {
     title: "技术栈",
     skills: [
       {
-        title: "Unity, C#, Swift/iOS, JavaScript, TypeScript, Next.js, Python, HTML/CSS",
+        title: "Swift, SwiftUI, ActivityKit, Apple Vision, WebKit, Unity, C#",
         description: <>开发</>,
         images: [],
       },
       {
-        title: "UI/UX Design, Figma, Git/GitHub, Supabase, OpenAI API",
-        description: <>设计 & 工具</>,
+        title: "TypeScript, Next.js, Supabase, Stripe, Python, HTML/CSS",
+        description: <>Web 与后端</>,
+        images: [],
+      },
+      {
+        title: "UI/UX Design, Figma, Git/GitHub",
+        description: <>设计与工具</>,
         images: [],
       },
     ],

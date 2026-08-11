@@ -17,6 +17,10 @@ export function Projects({ range, exclude, locale = "en" }: ProjectsProps) {
   }
 
   const sortedProjects = allProjects.sort((a, b) => {
+    if (a.metadata.order !== undefined || b.metadata.order !== undefined) {
+      return (a.metadata.order ?? Number.MAX_SAFE_INTEGER) -
+        (b.metadata.order ?? Number.MAX_SAFE_INTEGER);
+    }
     return new Date(b.metadata.publishedAt).getTime() - new Date(a.metadata.publishedAt).getTime();
   });
 
@@ -36,8 +40,16 @@ export function Projects({ range, exclude, locale = "en" }: ProjectsProps) {
           description={post.metadata.summary}
           content={post.content}
           avatars={post.metadata.team?.map((member) => ({ src: member.avatar })) || []}
-          link={post.metadata.link || ""}
+          links={
+            post.metadata.links.length > 0
+              ? post.metadata.links
+              : post.metadata.link
+                ? [{ label: "Website", url: post.metadata.link }]
+                : []
+          }
+          stack={post.metadata.stack}
           imageLayout={post.metadata.imageLayout || ""}
+          locale={locale}
         />
       ))}
     </Column>

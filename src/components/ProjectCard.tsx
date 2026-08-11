@@ -12,6 +12,7 @@ import {
   SmartLink,
   Text,
 } from "@once-ui-system/core";
+import styles from "./ProjectCard.module.scss";
 
 const VideoPlayer = ({ images }: { images: string[] }) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -46,8 +47,10 @@ interface ProjectCardProps {
   content: string;
   description: string;
   avatars: { src: string }[];
-  link: string;
+  links: { label: string; url: string }[];
+  stack: string[];
   imageLayout?: string;
+  locale?: string;
 }
 
 export const ProjectCard: React.FC<ProjectCardProps> = ({
@@ -57,23 +60,28 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
   content,
   description,
   avatars,
-  link,
+  links,
+  stack,
   imageLayout,
+  locale = "en",
 }) => {
+  const caseStudyLabel =
+    locale === "ja" ? "プロジェクト詳細" : locale === "zh" ? "项目详情" : "Project details";
+
   return (
     <Column fillWidth gap="m">
-      {imageLayout === "phone" ? (
-        <Row fillWidth gap="8" style={{ maxHeight: "50vh" }}>
+      {images.length > 0 && imageLayout === "phone" ? (
+        <div className={styles.phoneGallery}>
           {images.map((image, index) => (
-            <Flex key={index} flex={1} radius="l" overflow="hidden" border="neutral-medium">
+            <div key={image} className={styles.phoneFrame}>
               <img
                 src={image}
-                alt={title}
-                style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "var(--radius-l)" }}
+                alt={`${title} screenshot ${index + 1}`}
+                loading={index === 0 ? "eager" : "lazy"}
               />
-            </Flex>
+            </div>
           ))}
-        </Row>
+        </div>
       ) : images.length > 0 && /\.(mp4|webm|ogg)$/i.test(images[0]) ? (
         <Flex
           fillWidth
@@ -84,7 +92,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         >
           <VideoPlayer images={images} />
         </Flex>
-      ) : (
+      ) : images.length > 0 ? (
         <Carousel
           sizes="(max-width: 960px) 100vw, 960px"
           items={images.map((image) => ({
@@ -92,7 +100,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
             alt: title,
           }))}
         />
-      )}
+      ) : null}
       <Flex
         s={{ direction: "column" }}
         fillWidth
@@ -111,6 +119,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         {(avatars?.length > 0 || description?.trim() || content?.trim()) && (
           <Column flex={7} gap="16">
             {avatars?.length > 0 && <AvatarGroup avatars={avatars} size="m" reverse />}
+            {stack?.length > 0 && (
+              <Text variant="label-default-s" onBackground="brand-weak">
+                {stack.join(" · ")}
+              </Text>
+            )}
             {description?.trim() && (
               <Text wrap="balance" variant="body-default-s" onBackground="neutral-weak">
                 {description}
@@ -123,20 +136,19 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
                   style={{ margin: "0", width: "fit-content" }}
                   href={href}
                 >
-                  <Text variant="body-default-s">Visit Website</Text>
+                  <Text variant="body-default-s">{caseStudyLabel}</Text>
                 </SmartLink>
               )}
-              {link && (
+              {links.map((projectLink) => (
                 <SmartLink
+                  key={projectLink.url}
                   suffixIcon="arrowUpRightFromSquare"
                   style={{ margin: "0", width: "fit-content" }}
-                  href={link}
+                  href={projectLink.url}
                 >
-                  <Text variant="body-default-s">
-                    {link.includes("github.com") ? "View on GitHub" : "Visit Website"}
-                  </Text>
+                  <Text variant="body-default-s">{projectLink.label}</Text>
                 </SmartLink>
-              )}
+              ))}
             </Flex>
           </Column>
         )}

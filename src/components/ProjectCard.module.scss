@@ -1,0 +1,43 @@
+.phoneGallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.phoneFrame {
+  overflow: hidden;
+  min-width: 0;
+  aspect-ratio: 660 / 1434;
+  border: 1px solid var(--neutral-alpha-medium);
+  border-radius: var(--radius-l);
+  background: var(--neutral-alpha-weak);
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 640px) {
+  .phoneGallery {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(76%, 1fr);
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: inline mandatory;
+    scrollbar-width: none;
+    padding-inline: 1px;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .phoneFrame {
+    scroll-snap-align: start;
+  }
+}

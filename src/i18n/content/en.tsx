@@ -4,7 +4,7 @@ const person: Person = {
   firstName: "Shifeng",
   lastName: "Zhang",
   name: "Zhang Shifeng",
-  role: "Product Engineer",
+  role: "Independent Developer",
   avatar: "/images/avatar.jpg",
   email: "f.shera.09@gmail.com",
   location: "Asia/Tokyo",
@@ -35,7 +35,7 @@ const home: Home = {
   image: "/images/og/home.jpg",
   label: "Home",
   title: `${person.name}'s Portfolio`,
-  description: `Portfolio website showcasing my work as a ${person.role}`,
+  description: `Independent web and Apple platform products by ${person.name}`,
   headline: <>Building bridges between design and code</>,
   featured: {
     display: false,
@@ -45,7 +45,7 @@ const home: Home = {
   subline: (
     <>
       I&apos;m {person.name}, a {person.role} based in Tokyo.
-      I build full-stack applications from idea to launch.
+      I design, build, and launch products for the web and Apple platforms.
     </>
   ),
 };
@@ -71,9 +71,9 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Zhang Shifeng is a product engineer who builds full-stack applications from idea to launch.
-        With a background in game design and EdTech research, he develops AI-powered learning tools,
-        OCR utilities, and productivity apps — shipping end-to-end across frontend, backend, and AI integration.
+        Zhang Shifeng is an independent developer who takes web and Apple-platform products from
+        concept and design through development and launch. In 2026, he released four iOS/iPadOS apps
+        and two macOS apps on the App Store, drawing on his background in learning engineering and game design.
       </>
     ),
   },
@@ -83,7 +83,7 @@ const about: About = {
     experiences: [
       {
         company: "Innuna Inc.",
-        timeframe: "2026 - Present",
+        timeframe: "Jan – Aug 2026",
         role: "iOS App Developer & App Designer (Intern)",
         achievements: [
           <>
@@ -136,12 +136,17 @@ const about: About = {
     title: "Technical Skills",
     skills: [
       {
-        title: "Unity, C#, Swift/iOS, JavaScript, TypeScript, Next.js, Python, HTML/CSS",
+        title: "Swift, SwiftUI, ActivityKit, Apple Vision, WebKit, Unity, C#",
         description: <>Development</>,
         images: [],
       },
       {
-        title: "UI/UX Design, Figma, Git/GitHub, Supabase, OpenAI API",
+        title: "TypeScript, Next.js, Supabase, Stripe, Python, HTML/CSS",
+        description: <>Web & Backend</>,
+        images: [],
+      },
+      {
+        title: "UI/UX Design, Figma, Git/GitHub",
         description: <>Design & Tools</>,
         images: [],
       },
