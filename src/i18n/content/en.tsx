@@ -71,16 +71,38 @@ const about: About = {
     title: "Introduction",
     description: (
       <>
-        Zhang Shifeng is an independent developer who takes web and Apple-platform products from
-        concept and design through development and launch. In 2026, he released five iOS/iPadOS apps
-        and two macOS apps on the App Store, drawing on his background in learning engineering and game design.
+        Zhang Shifeng takes web and Apple-platform products from concept and design through
+        development and launch on his own. In 2026 he released five iOS/iPadOS apps and two macOS
+        apps on the App Store, drawing on a background in learning engineering and game design.
       </>
     ),
+    tagline: <>Turning small frictions in study and daily life into apps that are a pleasure to use.</>,
   },
   work: {
     display: true,
     title: "Work Experience",
     experiences: [
+      {
+        company: "Independent",
+        timeframe: "2026 - Present",
+        role: "Indie Developer · iOS / macOS / Web",
+        current: true,
+        achievements: [
+          <>
+            Took seven apps from concept and design to App Store release single-handedly; Passnote earns revenue through subscriptions.
+          </>,
+        ],
+        icons: [
+          { src: "/images/projects/passnote/icon.png", alt: "Passnote" },
+          { src: "/images/projects/tiny-coach/icon.png", alt: "Tiny Coach" },
+          { src: "/images/projects/airalarm/icon.png", alt: "AirAlarm" },
+          { src: "/images/projects/focus-densya/icon.png", alt: "FocusDensya" },
+          { src: "/images/projects/html-previewer/icon.png", alt: "HTML Previewer" },
+          { src: "/images/projects/corner-peek/icon.png", alt: "Corner Peek" },
+          { src: "/images/projects/cheese-ocr/icon.png", alt: "Cheese! OCR" },
+        ],
+        images: [],
+      },
       {
         company: "Innuna Inc.",
         timeframe: "Jan – Aug 2026",

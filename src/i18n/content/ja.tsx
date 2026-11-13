@@ -71,26 +71,46 @@ const about: About = {
     title: "はじめに",
     description: (
       <>
-        WebとAppleプラットフォームで、企画・設計・開発・リリースまで一貫して手がける個人開発者です。
-        2026年にiOS/iPadOSアプリ5本とmacOSアプリ2本をApp Storeへリリースしました。
-        教育工学とゲームデザインの知見を活かし、学習プロダクトや日常の課題を解決するツールを開発しています。
+        WebとAppleプラットフォームで、企画・設計・開発・リリースまで一人で手がけています。2026年にiOS/iPadOSアプリ5本とmacOSアプリ2本をApp
+        Storeへリリース。教育工学とゲームデザインを背景に、学習プロダクトと日常のツールを作っています。
       </>
     ),
+    tagline: <>学びと日常の小さな不便を、使いやすいアプリに。</>,
   },
   work: {
     display: true,
     title: "職歴",
     experiences: [
       {
+        company: "個人開発",
+        timeframe: "2026年 - 現在",
+        role: "個人開発者 · iOS / macOS / Web",
+        current: true,
+        achievements: [
+          <>
+            企画・デザインからリリースまで一人で手がけ、7本のアプリを公開。Passnoteはサブスクリプションで収益化。
+          </>,
+        ],
+        icons: [
+          { src: "/images/projects/passnote/icon.png", alt: "Passnote" },
+          { src: "/images/projects/tiny-coach/icon.png", alt: "Tiny Coach" },
+          { src: "/images/projects/airalarm/icon.png", alt: "AirAlarm" },
+          { src: "/images/projects/focus-densya/icon.png", alt: "FocusDensya" },
+          { src: "/images/projects/html-previewer/icon.png", alt: "HTML Previewer" },
+          { src: "/images/projects/corner-peek/icon.png", alt: "Corner Peek" },
+          { src: "/images/projects/cheese-ocr/icon.png", alt: "Cheese! OCR" },
+        ],
+        images: [],
+      },
+      {
         company: "Innuna Inc.",
         timeframe: "2026年1月 - 8月",
         role: "iOSアプリ開発者 & アプリデザイナー（インターン）",
         achievements: [
+          <>幼稚園・小学校の保護者向け教育シミュレーションアプリのiOSフロントエンドを開発。</>,
           <>
-            幼稚園・小学校の保護者向け教育シミュレーションアプリのiOSフロントエンドを開発。
-          </>,
-          <>
-            アプリのデザインからSwiftによる実装まで一貫して担当。Apple App Store（中国リージョン）にリリース。
+            アプリのデザインからSwiftによる実装まで一貫して担当。Apple App
+            Store（中国リージョン）にリリース。
           </>,
         ],
         images: [],
@@ -103,9 +123,7 @@ const about: About = {
           <>
             モバイルゲームのゲームシステム、レベル、UI/UXを設計。要件分析からビジュアル納品までワークフロー全体を担当。
           </>,
-          <>
-            広告クリエイティブの最適化を主導し、広告パフォーマンスを30%改善。
-          </>,
+          <>広告クリエイティブの最適化を主導し、広告パフォーマンスを30%改善。</>,
         ],
         images: [],
       },

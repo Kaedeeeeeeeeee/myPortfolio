@@ -44,8 +44,8 @@ const home: Home = {
   },
   subline: (
     <>
-      我是{person.name}，一名居住在东京的{person.role}。
-      在 Web 与 Apple 平台上，从想法、设计到上线独立交付产品。
+      我是{person.name}，一名居住在东京的{person.role}。 在 Web 与 Apple
+      平台上，从想法、设计到上线独立交付产品。
     </>
   ),
 };
@@ -71,27 +71,43 @@ const about: About = {
     title: "简介",
     description: (
       <>
-        张诗枫是一名独立开发者，负责 Web 与 Apple 平台产品从企划、设计、开发到上线的完整流程。
-        2026年已在 App Store 发布5款 iOS/iPadOS 应用和2款 macOS 应用，
-        并结合教育工程与游戏设计背景，持续开发学习产品和解决日常问题的工具。
+        从企划、设计、开发到上架，独立完成 Web 与 Apple 平台产品的全流程。2026 年已在 App Store 发布
+        5 款 iOS/iPadOS 应用和 2 款 macOS
+        应用；背景是教育工程与游戏设计，现在主要做学习产品和日常工具。
       </>
     ),
+    tagline: <>把学习和日常里的小麻烦，做成好用的 App。</>,
   },
   work: {
     display: true,
     title: "工作经历",
     experiences: [
       {
+        company: "独立开发",
+        timeframe: "2026 - 至今",
+        role: "个人开发者 · iOS / macOS / Web",
+        current: true,
+        achievements: [
+          <>从企划、设计到上架独立完成 7 款 App，其中 Passnote 已通过订阅实现收入。</>,
+        ],
+        icons: [
+          { src: "/images/projects/passnote/icon.png", alt: "Passnote" },
+          { src: "/images/projects/tiny-coach/icon.png", alt: "Tiny Coach" },
+          { src: "/images/projects/airalarm/icon.png", alt: "AirAlarm" },
+          { src: "/images/projects/focus-densya/icon.png", alt: "FocusDensya" },
+          { src: "/images/projects/html-previewer/icon.png", alt: "HTML Previewer" },
+          { src: "/images/projects/corner-peek/icon.png", alt: "Corner Peek" },
+          { src: "/images/projects/cheese-ocr/icon.png", alt: "Cheese! OCR" },
+        ],
+        images: [],
+      },
+      {
         company: "Innuna Inc.",
         timeframe: "2026年1月 - 8月",
         role: "iOS 应用开发 & 应用设计（实习）",
         achievements: [
-          <>
-            开发了一款面向幼儿园和小学家长的教育模拟应用的 iOS 前端。
-          </>,
-          <>
-            主导从应用设计到 Swift 实现的全流程开发。已上架 Apple App Store（中国区）。
-          </>,
+          <>开发了一款面向幼儿园和小学家长的教育模拟应用的 iOS 前端。</>,
+          <>主导从应用设计到 Swift 实现的全流程开发。已上架 Apple App Store（中国区）。</>,
         ],
         images: [],
       },
@@ -100,12 +116,8 @@ const about: About = {
         timeframe: "2022 - 2023",
         role: "游戏策划 & UI/UX 设计师",
         achievements: [
-          <>
-            设计手游的游戏系统、关卡和 UI/UX，负责从需求分析到视觉交付的完整工作流。
-          </>,
-          <>
-            主导广告素材优化，广告效果提升 30%。
-          </>,
+          <>设计手游的游戏系统、关卡和 UI/UX，负责从需求分析到视觉交付的完整工作流。</>,
+          <>主导广告素材优化，广告效果提升 30%。</>,
         ],
         images: [],
       },
