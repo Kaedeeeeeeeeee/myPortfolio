@@ -133,6 +133,8 @@ export interface About extends BasePageConfig {
     title: string;
     /** Description of the introduction section */
     description: React.ReactNode;
+    /** One-line positioning statement shown under the name */
+    tagline?: React.ReactNode;
   };
   /** Work experience section */
   work: {
@@ -150,6 +152,10 @@ export interface About extends BasePageConfig {
       role: string;
       /** Achievements at the company */
       achievements: React.ReactNode[];
+      /** Marks the ongoing role, highlighted on the timeline */
+      current?: boolean;
+      /** Small icons (e.g. shipped apps) shown under the entry */
+      icons?: Array<{ src: string; alt: string }>;
       /** Images related to the experience */
       images?: Array<{
         /** Image source path */

@@ -54,14 +54,14 @@ export default async function About({
       items: [],
     },
     {
-      title: about.studies.title,
-      display: about.studies.display,
-      items: about.studies.institutions.map((institution) => institution.name),
-    },
-    {
       title: about.work.title,
       display: about.work.display,
       items: about.work.experiences.map((experience) => experience.company),
+    },
+    {
+      title: about.studies.title,
+      display: about.studies.display,
+      items: about.studies.institutions.map((institution) => institution.name),
     },
     {
       title: about.technical.title,
@@ -172,6 +172,15 @@ export default async function About({
             >
               {person.role}
             </Text>
+            {about.intro.tagline && (
+              <Text
+                className={`${styles.textAlign} ${styles.tagline}`}
+                variant="heading-default-l"
+                onBackground="neutral-strong"
+              >
+                {about.intro.tagline}
+              </Text>
+            )}
             {(social.length > 0) && (
               <Row
                 className={styles.blockAlign}
@@ -183,6 +192,28 @@ export default async function About({
                 fitWidth
                 data-border="rounded"
               >
+                <React.Fragment key="resume">
+                  <Row s={{ hide: true }}>
+                    <Button
+                      href={`/resume/resume-${locale}.pdf`}
+                      prefixIcon="download"
+                      label={t("resumeDownload")}
+                      size="s"
+                      weight="default"
+                      variant="primary"
+                      target="_blank"
+                    />
+                  </Row>
+                  <Row hide s={{ hide: false }}>
+                    <IconButton
+                      size="l"
+                      href={`/resume/resume-${locale}.pdf`}
+                      icon="download"
+                      variant="primary"
+                      target="_blank"
+                    />
+                  </Row>
+                </React.Fragment>
                 {social.map((item) => {
                   const isMailto = item.link.startsWith("mailto:");
                   const target = isMailto ? "_self" : "_blank";
@@ -213,36 +244,94 @@ export default async function About({
                     )
                   );
                 })}
-                <React.Fragment key="resume">
-                  <Row s={{ hide: true }}>
-                    <Button
-                      href={`/resume/resume-${locale}.pdf`}
-                      prefixIcon="download"
-                      label={t("resumeDownload")}
-                      size="s"
-                      weight="default"
-                      variant="secondary"
-                      target="_blank"
-                    />
-                  </Row>
-                  <Row hide s={{ hide: false }}>
-                    <IconButton
-                      size="l"
-                      href={`/resume/resume-${locale}.pdf`}
-                      icon="download"
-                      variant="secondary"
-                      target="_blank"
-                    />
-                  </Row>
-                </React.Fragment>
               </Row>
             )}
           </Column>
 
           {about.intro.display && (
-            <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
-              {about.intro.description}
+            <Column fillWidth gap="m" marginBottom="xl">
+              <Text variant="body-default-l" onBackground="neutral-weak">
+                {about.intro.description}
+              </Text>
             </Column>
+          )}
+
+          {about.work.display && (
+            <>
+              <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="l">
+                {about.work.title}
+              </Heading>
+              <div className={styles.timeline}>
+                {about.work.experiences.map((experience, index) => (
+                  <div
+                    key={`${experience.company}-${experience.role}-${index}`}
+                    className={`${styles.job} ${experience.current ? styles.jobNow : ""}`}
+                  >
+                    <Row fillWidth horizontal="between" vertical="end" gap="12" wrap>
+                      <Text id={experience.company} variant="heading-strong-l">
+                        {experience.company}
+                      </Text>
+                      <Text variant="body-default-s" onBackground="neutral-weak">
+                        {experience.timeframe}
+                      </Text>
+                    </Row>
+                    <Text variant="body-default-s" onBackground="brand-weak" marginBottom="8">
+                      {experience.role}
+                    </Text>
+                    <Column as="ul" gap="8" className={styles.achievements}>
+                      {experience.achievements.map(
+                        (achievement: React.ReactNode, index: number) => (
+                          <Text
+                            as="li"
+                            variant="body-default-m"
+                            onBackground="neutral-weak"
+                            key={`${experience.company}-${index}`}
+                          >
+                            {achievement}
+                          </Text>
+                        ),
+                      )}
+                    </Column>
+                    {experience.icons && experience.icons.length > 0 && (
+                      <a className={styles.appIcons} href={`/${locale}/work`}>
+                        {experience.icons.map((icon) => (
+                          <img
+                            key={icon.src}
+                            src={icon.src}
+                            alt={icon.alt}
+                            title={icon.alt}
+                            width={30}
+                            height={30}
+                            loading="lazy"
+                          />
+                        ))}
+                      </a>
+                    )}
+                    {experience.images && experience.images.length > 0 && (
+                      <Row fillWidth paddingTop="m" gap="12" wrap>
+                        {experience.images.map((image, index) => (
+                          <Row
+                            key={index}
+                            border="neutral-medium"
+                            radius="m"
+                            minWidth={image.width}
+                            height={image.height}
+                          >
+                            <Media
+                              enlarge
+                              radius="m"
+                              sizes={image.width.toString()}
+                              alt={image.alt}
+                              src={image.src}
+                            />
+                          </Row>
+                        ))}
+                      </Row>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </>
           )}
 
           {about.studies.display && (
@@ -264,65 +353,6 @@ export default async function About({
                     <Text variant="heading-default-xs" onBackground="neutral-weak">
                       {institution.description}
                     </Text>
-                  </Column>
-                ))}
-              </Column>
-            </>
-          )}
-
-          {about.work.display && (
-            <>
-              <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m">
-                {about.work.title}
-              </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
-                {about.work.experiences.map((experience, index) => (
-                  <Column key={`${experience.company}-${experience.role}-${index}`} fillWidth>
-                    <Row fillWidth horizontal="between" vertical="end" marginBottom="4">
-                      <Text id={experience.company} variant="heading-strong-l">
-                        {experience.company}
-                      </Text>
-                      <Text variant="heading-default-xs" onBackground="neutral-weak">
-                        {experience.timeframe}
-                      </Text>
-                    </Row>
-                    <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
-                      {experience.role}
-                    </Text>
-                    <Column as="ul" gap="16">
-                      {experience.achievements.map(
-                        (achievement: React.ReactNode, index: number) => (
-                          <Text
-                            as="li"
-                            variant="body-default-m"
-                            key={`${experience.company}-${index}`}
-                          >
-                            {achievement}
-                          </Text>
-                        ),
-                      )}
-                    </Column>
-                    {experience.images && experience.images.length > 0 && (
-                      <Row fillWidth paddingTop="m" paddingLeft="40" gap="12" wrap>
-                        {experience.images.map((image, index) => (
-                          <Row
-                            key={index}
-                            border="neutral-medium"
-                            radius="m"
-                            minWidth={image.width}
-                            height={image.height}
-                          >
-                            <Media
-                              enlarge
-                              radius="m"
-                              sizes={image.width.toString()}
-                              alt={image.alt}
-                              src={image.src}
-                            />
-                          </Row>
-                        ))}
-                      </Row>
-                    )}
                   </Column>
                 ))}
               </Column>

@@ -14,6 +14,11 @@ type ProjectLink = {
   url: string;
 };
 
+export type ProjectHighlight = {
+  value: string;
+  label: string;
+};
+
 type Metadata = {
   title: string;
   publishedAt: string;
@@ -27,6 +32,11 @@ type Metadata = {
   stack: string[];
   imageLayout?: string;
   order?: number;
+  tagline?: string;
+  icon?: string;
+  platforms: string[];
+  featured?: boolean;
+  highlights: ProjectHighlight[];
 };
 
 import { notFound } from "next/navigation";
@@ -60,6 +70,11 @@ function readMDXFile(filePath: string) {
     stack: data.stack || [],
     imageLayout: data.imageLayout || "",
     order: data.order,
+    tagline: data.tagline || "",
+    icon: data.icon || "",
+    platforms: data.platforms || [],
+    featured: Boolean(data.featured),
+    highlights: data.highlights || [],
   };
 
   return { metadata, content };

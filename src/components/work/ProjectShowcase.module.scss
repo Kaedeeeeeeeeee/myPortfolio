@@ -1,0 +1,259 @@
+@use "../breakpoints.scss" as breakpoints;
+
+/* ---------- shared bits ---------- */
+
+.icon {
+  flex: none;
+  border-radius: 22.5%;
+  border: 1px solid var(--neutral-alpha-medium);
+  background: var(--neutral-alpha-weak);
+  object-fit: cover;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  font-size: 12px;
+  line-height: 1;
+  padding: 6px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--neutral-alpha-medium);
+  color: var(--neutral-on-background-weak);
+  white-space: nowrap;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+
+/* `a.` outranks Once UI's global `a:not(.button)` link colour */
+a.titleLink,
+a.titleLink:visited {
+  color: var(--neutral-on-background-strong);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+}
+
+/* ---------- featured project ---------- */
+
+.featured {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  gap: 28px;
+  align-items: center;
+  padding: 36px;
+  border-radius: 28px;
+  border: 1px solid var(--neutral-alpha-medium);
+  background: var(--surface-background);
+  box-shadow: var(--shadow-l);
+  overflow: hidden;
+
+  @include breakpoints.s {
+    grid-template-columns: 1fr;
+    padding: 22px;
+  }
+}
+
+.featuredInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+}
+
+.highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.highlight {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 12px;
+  border-radius: var(--radius-m);
+  background: var(--neutral-alpha-weak);
+  min-width: 0;
+
+  strong {
+    font-family: var(--font-heading);
+    font-size: 22px;
+    font-weight: 650;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+    color: var(--neutral-on-background-strong);
+  }
+
+  span {
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--neutral-on-background-weak);
+  }
+}
+
+.fan {
+  position: relative;
+  height: 420px;
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40%;
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+    transition: transform 0.4s ease;
+  }
+
+  img:nth-child(1) {
+    transform: translate(-122%, -46%) rotate(-6deg);
+  }
+
+  img:nth-child(2) {
+    transform: translate(-50%, -52%);
+    z-index: 1;
+  }
+
+  img:nth-child(3) {
+    transform: translate(22%, -46%) rotate(6deg);
+  }
+
+  @include breakpoints.s {
+    height: 320px;
+  }
+}
+
+.featured:hover .fan {
+  img:nth-child(1) {
+    transform: translate(-128%, -47%) rotate(-8deg);
+  }
+
+  img:nth-child(3) {
+    transform: translate(28%, -47%) rotate(8deg);
+  }
+}
+
+/* ---------- grid ---------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+
+  @include breakpoints.s {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--neutral-alpha-medium);
+  background: var(--surface-background);
+  overflow: hidden;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-l);
+  }
+}
+
+.media {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  height: 250px;
+  padding: 22px 18px 0;
+  overflow: hidden;
+  isolation: isolate;
+  text-decoration: none;
+
+  /* soft colour wash taken from the first screenshot */
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -40px;
+    z-index: -1;
+    background: var(--tint) center / cover;
+    filter: blur(42px) saturate(1.3);
+    opacity: 0.55;
+  }
+
+  img {
+    align-self: flex-start;
+    width: 30%;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.16);
+  }
+
+  img:nth-child(2) {
+    margin-top: 18px;
+  }
+}
+
+.mediaWide img {
+  width: 92%;
+  border-radius: 10px 10px 0 0;
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 18px 18px;
+}
+
+.summary {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.pushDown {
+  margin-top: auto;
+}
+
+/* ---------- project page gallery ---------- */
+
+.strip {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 8px;
+
+  img {
+    flex: none;
+    height: clamp(360px, 60vh, 560px);
+    width: auto;
+    border-radius: 16px;
+    border: 1px solid var(--neutral-alpha-medium);
+    background: var(--neutral-alpha-weak);
+    scroll-snap-align: start;
+  }
+}
+
+.stripWide img {
+  height: clamp(220px, 40vh, 420px);
+}

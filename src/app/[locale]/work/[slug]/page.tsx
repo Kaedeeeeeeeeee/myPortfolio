@@ -4,7 +4,6 @@ import {
   Meta,
   Schema,
   AvatarGroup,
-  Button,
   Column,
   Flex,
   Heading,
@@ -17,10 +16,17 @@ import {
 import { baseURL } from "@/resources";
 import { getLocalizedContent } from "@/i18n/content";
 import { locales, type Locale } from "@/i18n/config";
-import { formatDate } from "@/utils/formatDate";
 import { ScrollToHash, CustomMDX } from "@/components";
 import { Metadata } from "next";
 import { Projects } from "@/components/work/Projects";
+import {
+  PlatformChips,
+  ProjectGallery,
+  ProjectIcon,
+  ProjectLinks,
+  type ShowcaseProject,
+} from "@/components/work/ProjectShowcase";
+import { getTranslations } from "next-intl/server";
 
 export async function generateStaticParams() {
   const params: { locale: string; slug: string }[] = [];
@@ -44,14 +50,14 @@ export async function generateMetadata({
     ? routeParams.slug.join("/")
     : routeParams.slug || "";
 
-  const { work } = await getLocalizedContent(locale as Locale);
+  const { work, person } = await getLocalizedContent(locale as Locale);
   const posts = getPosts(["src", "content", "work", locale]);
   const post = posts.find((post) => post.slug === slugPath);
 
   if (!post) return {};
 
   return Meta.generate({
-    title: post.metadata.title,
+    title: `${post.metadata.title} · ${person.name}`,
     description: post.metadata.summary,
     baseURL: baseURL,
     image: post.metadata.image || `/api/og/generate?title=${post.metadata.title}`,
@@ -79,6 +85,22 @@ export default async function Project({
     notFound();
   }
 
+  const t = await getTranslations({ locale, namespace: "work" });
+  const project: ShowcaseProject = {
+    slug: post.slug,
+    href: `/${locale}/work/${post.slug}`,
+    title: post.metadata.title,
+    tagline: post.metadata.tagline,
+    summary: post.metadata.summary,
+    icon: post.metadata.icon,
+    platforms: post.metadata.platforms,
+    images: post.metadata.images,
+    imageLayout: post.metadata.imageLayout,
+    stack: post.metadata.stack,
+    highlights: post.metadata.highlights,
+    links: post.metadata.links,
+  };
+
   const avatars =
     post.metadata.team?.map((person) => ({
       src: person.avatar,
@@ -105,18 +127,22 @@ export default async function Project({
       />
       <Column maxWidth="s" gap="16" horizontal="center" align="center">
         <SmartLink href={`/${locale}/work`}>
-          <Text variant="label-strong-m">Projects</Text>
+          <Text variant="label-strong-m">← {t("heading")}</Text>
         </SmartLink>
-        <Text variant="body-default-xs" onBackground="neutral-weak" marginBottom="12">
-          {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
-        </Text>
+        <ProjectIcon project={project} size={88} />
         <Heading variant="display-strong-m">{post.metadata.title}</Heading>
+        {project.tagline && (
+          <Text variant="body-default-l" onBackground="neutral-weak">
+            {project.tagline}
+          </Text>
+        )}
+        <PlatformChips platforms={project.platforms} />
       </Column>
-      <Row marginBottom="32" horizontal="center">
+      {post.metadata.team?.length > 0 && (
         <Row gap="16" vertical="center">
-          {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="s" />}
+          <AvatarGroup reverse avatars={avatars} size="s" />
           <Text variant="label-default-m" onBackground="brand-weak">
-            {post.metadata.team?.map((member, idx) => (
+            {post.metadata.team.map((member, idx) => (
               <span key={idx}>
                 {idx > 0 && (
                   <Text as="span" onBackground="neutral-weak">
@@ -128,19 +154,13 @@ export default async function Project({
             ))}
           </Text>
         </Row>
-      </Row>
-      {post.metadata.imageLayout === "phone" ? (
-        <Row fillWidth gap="8" style={{ maxHeight: "50vh" }}>
-          {post.metadata.images.map((image, index) => (
-            <Flex key={index} flex={1} radius="m" overflow="hidden" border="neutral-alpha-medium">
-              <img
-                src={image}
-                alt={post.metadata.title}
-                style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "var(--radius-m)" }}
-              />
-            </Flex>
-          ))}
-        </Row>
+      )}
+      {post.metadata.imageLayout === "phone" || post.metadata.imageLayout === "mac" ? (
+        <ProjectGallery
+          title={post.metadata.title}
+          images={post.metadata.images}
+          imageLayout={post.metadata.imageLayout}
+        />
       ) : (
         post.metadata.images.map((image, index) =>
           /\.(mp4|webm|ogg)$/i.test(image) ? (
@@ -168,21 +188,34 @@ export default async function Project({
               priority={index === 0}
               aspectRatio="16 / 9"
               radius="m"
-              alt="image"
+              alt={`${post.metadata.title} ${index + 1}`}
               src={image}
             />
           ),
         )
       )}
-      <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
-        <CustomMDX source={post.content} />
+      <Column maxWidth="s" gap="16" horizontal="center" align="center">
+        <Text variant="body-default-l" onBackground="neutral-weak" wrap="balance">
+          {post.metadata.summary}
+        </Text>
+        {post.metadata.stack.length > 0 && (
+          <Text variant="label-default-s" onBackground="brand-weak">
+            {post.metadata.stack.join(" · ")}
+          </Text>
+        )}
+        <ProjectLinks project={project} locale={locale} showDetails={false} />
       </Column>
+      {post.content.trim() && (
+        <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
+          <CustomMDX source={post.content} />
+        </Column>
+      )}
       <Column fillWidth gap="40" horizontal="center" marginTop="40">
         <Line maxWidth="40" />
-        <Heading as="h2" variant="heading-strong-xl" marginBottom="24">
-          Related projects
+        <Heading as="h2" variant="heading-strong-xl">
+          {t("related")}
         </Heading>
-        <Projects locale={locale} exclude={[post.slug]} range={[2]} />
+        <Projects locale={locale} exclude={[post.slug]} range={[1, 2]} />
       </Column>
       <ScrollToHash />
     </Column>

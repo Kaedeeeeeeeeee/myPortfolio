@@ -6,7 +6,7 @@
     "gallery": "相册"
   },
   "about": {
-    "title": "关于 – 张诗枫",
+    "title": "关于 · 张诗枫",
     "description": "张诗枫，东京，产品工程师",
     "introTitle": "简介",
     "studiesTitle": "教育经历",
@@ -20,8 +20,11 @@
     "description": "产品工程师张诗枫的作品集网站"
   },
   "work": {
-    "title": "项目 – 张诗枫",
-    "description": "张诗枫的设计与开发项目"
+    "title": "作品 · 张诗枫",
+    "description": "张诗枫的设计与开发项目",
+    "heading": "作品",
+    "subtitle": "独立开发的 iOS / macOS 应用与研究项目",
+    "related": "其他作品"
   },
   "notFound": {
     "title": "404",
