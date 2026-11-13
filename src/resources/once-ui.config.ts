@@ -13,7 +13,7 @@ import {
 } from "@/types";
 
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL: string = "https://www.chatjlpt.jp";
+const baseURL: string = "https://zhangshifeng.space";
 
 const routes: RoutesConfig = {
   "/": true,
