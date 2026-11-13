@@ -193,7 +193,7 @@ export default async function About({
                 data-border="rounded"
               >
                 <React.Fragment key="resume">
-                  <Row s={{ hide: true }}>
+                  <Row className={styles.resume} s={{ hide: true }}>
                     <Button
                       href={`/resume/resume-${locale}.pdf`}
                       prefixIcon="download"
@@ -204,7 +204,7 @@ export default async function About({
                       target="_blank"
                     />
                   </Row>
-                  <Row hide s={{ hide: false }}>
+                  <Row className={styles.resume} hide s={{ hide: false }}>
                     <IconButton
                       size="l"
                       href={`/resume/resume-${locale}.pdf`}

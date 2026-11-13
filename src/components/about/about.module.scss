@@ -93,6 +93,51 @@
     }
 }
 
+/* ---------- résumé button: lift + bobbing download arrow on hover ---------- */
+
+.resume {
+    :global(a),
+    :global(button) {
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+    &:hover :global(a),
+    &:focus-within :global(a) {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 18px -6px rgba(0, 0, 0, 0.35);
+    }
+
+    &:hover :global(svg),
+    &:focus-within :global(svg) {
+        animation: resumeNudge 0.9s ease-in-out infinite;
+    }
+
+    &:active :global(a) {
+        transform: translateY(0);
+        box-shadow: none;
+    }
+}
+
+@keyframes resumeNudge {
+    0%,
+    100% {
+        transform: translateY(-1px);
+    }
+    50% {
+        transform: translateY(3px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .resume :global(a),
+    .resume :global(svg) {
+        transition: none;
+        animation: none !important;
+    }
+}
+
 @media (max-width: breakpoints.$s) {
     .textAlign {
         text-align: center;
