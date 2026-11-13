@@ -6,7 +6,7 @@
     "gallery": "Gallery"
   },
   "about": {
-    "title": "About – Zhang Shifeng",
+    "title": "About · Zhang Shifeng",
     "description": "Meet Zhang Shifeng, Product Engineer based in Tokyo",
     "introTitle": "Introduction",
     "studiesTitle": "Studies",
@@ -20,8 +20,11 @@
     "description": "Portfolio website showcasing my work as a Product Engineer"
   },
   "work": {
-    "title": "Projects – Zhang Shifeng",
-    "description": "Design and dev projects by Zhang Shifeng"
+    "title": "Work · Zhang Shifeng",
+    "description": "Design and dev projects by Zhang Shifeng",
+    "heading": "Work",
+    "subtitle": "Independent iOS and macOS apps, plus research",
+    "related": "More projects"
   },
   "notFound": {
     "title": "404",

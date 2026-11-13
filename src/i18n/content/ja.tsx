@@ -34,7 +34,7 @@ const home: Home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "ホーム",
-  title: `${person.name}のポートフォリオ`,
+  title: `${person.name} · 個人開発者`,
   description: `WebとAppleプラットフォームの個人開発作品を紹介するポートフォリオサイト`,
   headline: <>デザインとコードの架け橋を築く</>,
   featured: {
@@ -53,7 +53,7 @@ const home: Home = {
 const about: About = {
   path: "/about",
   label: "自己紹介",
-  title: `自己紹介 – ${person.name}`,
+  title: `自己紹介 · ${person.name}`,
   description: `${person.name}、東京在住の${person.role}`,
   tableOfContent: {
     display: true,
@@ -72,7 +72,7 @@ const about: About = {
     description: (
       <>
         WebとAppleプラットフォームで、企画・設計・開発・リリースまで一貫して手がける個人開発者です。
-        2026年にiOS/iPadOSアプリ4本とmacOSアプリ2本をApp Storeへリリースしました。
+        2026年にiOS/iPadOSアプリ5本とmacOSアプリ2本をApp Storeへリリースしました。
         教育工学とゲームデザインの知見を活かし、学習プロダクトや日常の課題を解決するツールを開発しています。
       </>
     ),

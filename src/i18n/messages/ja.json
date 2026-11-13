@@ -6,7 +6,7 @@
     "gallery": "ギャラリー"
   },
   "about": {
-    "title": "自己紹介 – 張 詩楓",
+    "title": "自己紹介 · 張 詩楓",
     "description": "東京在住のプロダクトエンジニア、張 詩楓のポートフォリオ",
     "introTitle": "はじめに",
     "studiesTitle": "学歴",
@@ -20,8 +20,11 @@
     "description": "プロダクトエンジニアとしての作品を紹介するポートフォリオサイト"
   },
   "work": {
-    "title": "プロジェクト – 張 詩楓",
-    "description": "張 詩楓のデザイン・開発プロジェクト"
+    "title": "作品 · 張 詩楓",
+    "description": "張 詩楓のデザイン・開発プロジェクト",
+    "heading": "作品",
+    "subtitle": "個人開発の iOS / macOS アプリと研究プロジェクト",
+    "related": "ほかの作品"
   },
   "notFound": {
     "title": "404",

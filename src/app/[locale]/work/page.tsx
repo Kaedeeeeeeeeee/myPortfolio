@@ -1,4 +1,4 @@
-import { Column, Heading, Meta, Schema } from "@once-ui-system/core";
+import { Column, Heading, Meta, Schema, Text } from "@once-ui-system/core";
 import { baseURL } from "@/resources";
 import { getLocalizedContent } from "@/i18n/content";
 import { type Locale } from "@/i18n/config";
@@ -45,10 +45,15 @@ export default async function Work({
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Heading marginBottom="l" variant="heading-strong-xl" align="center">
-        {t("title")}
-      </Heading>
-      <Projects locale={locale} />
+      <Column gap="12" horizontal="center" marginBottom="40" paddingX="l">
+        <Heading variant="display-strong-s" align="center">
+          {t("heading")}
+        </Heading>
+        <Text variant="body-default-l" onBackground="neutral-weak" align="center" wrap="balance">
+          {t("subtitle")}
+        </Text>
+      </Column>
+      <Projects locale={locale} showFeatured />
     </Column>
   );
 }

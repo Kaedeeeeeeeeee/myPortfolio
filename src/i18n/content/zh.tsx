@@ -34,7 +34,7 @@ const home: Home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "首页",
-  title: `${person.name}的作品集`,
+  title: `${person.name} · 独立开发者`,
   description: `${person.name}的 Web 与 Apple 平台独立开发作品集`,
   headline: <>连接设计与代码</>,
   featured: {
@@ -53,7 +53,7 @@ const home: Home = {
 const about: About = {
   path: "/about",
   label: "关于",
-  title: `关于 – ${person.name}`,
+  title: `关于 · ${person.name}`,
   description: `${person.name}，东京，${person.role}`,
   tableOfContent: {
     display: true,
@@ -72,7 +72,7 @@ const about: About = {
     description: (
       <>
         张诗枫是一名独立开发者，负责 Web 与 Apple 平台产品从企划、设计、开发到上线的完整流程。
-        2026年已在 App Store 发布4款 iOS/iPadOS 应用和2款 macOS 应用，
+        2026年已在 App Store 发布5款 iOS/iPadOS 应用和2款 macOS 应用，
         并结合教育工程与游戏设计背景，持续开发学习产品和解决日常问题的工具。
       </>
     ),

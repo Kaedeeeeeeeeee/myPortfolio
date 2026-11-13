@@ -34,7 +34,7 @@ const home: Home = {
   path: "/",
   image: "/images/og/home.jpg",
   label: "Home",
-  title: `${person.name}'s Portfolio`,
+  title: `${person.name} · Independent Developer`,
   description: `Independent web and Apple platform products by ${person.name}`,
   headline: <>Building bridges between design and code</>,
   featured: {
@@ -53,7 +53,7 @@ const home: Home = {
 const about: About = {
   path: "/about",
   label: "About",
-  title: `About – ${person.name}`,
+  title: `About · ${person.name}`,
   description: `Meet ${person.name}, ${person.role} from ${person.location}`,
   tableOfContent: {
     display: true,
@@ -72,7 +72,7 @@ const about: About = {
     description: (
       <>
         Zhang Shifeng is an independent developer who takes web and Apple-platform products from
-        concept and design through development and launch. In 2026, he released four iOS/iPadOS apps
+        concept and design through development and launch. In 2026, he released five iOS/iPadOS apps
         and two macOS apps on the App Store, drawing on his background in learning engineering and game design.
       </>
     ),
